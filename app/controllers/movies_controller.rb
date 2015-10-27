@@ -20,7 +20,7 @@ class MoviesController < ApplicationController
     @movie = Movie.new(movie_params)
 
     if @movie.save
-      redirect_to movies_path(@movie)
+      redirect_to movies_path(@movie), notice: "#{@movie.title} was submitted successfully!"
     else
       render :new
     end
