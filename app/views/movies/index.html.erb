@@ -12,6 +12,8 @@
   <%= label_tag(:director) %>
   <%= text_field_tag(:director, params[:director]) %>
 
+  <!-- runtime search -->
+  <%= select_tag(:runtime, options_for_select([["", ""],["Under 90 Mins", "under90"], ["Between 90 and 120 Mins", "between90and120"], ["Over 120 Mins", "over120"]])) %>
   <%= submit_tag "Search" %>
 <% end %>
 

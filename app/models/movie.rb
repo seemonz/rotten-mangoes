@@ -31,7 +31,9 @@ class Movie < ActiveRecord::Base
   end
 
   def self.search(title_search, director_search)
-    if title_search || director_search
+    if (title_search.blank? && director_search.blank?)
+      self.all
+    elsif title_search || director_search
       self.where("title LIKE ? OR director LIKE ?", title_search, director_search)
     else
       self.all
