@@ -30,6 +30,14 @@ class Movie < ActiveRecord::Base
     end
   end
 
+  def self.search(title_search, director_search)
+    if title_search || director_search
+      self.where("title LIKE ? OR director LIKE ?", title_search, director_search)
+    else
+      self.all
+    end
+  end
+
   protected
 
   def release_date_is_in_the_future
