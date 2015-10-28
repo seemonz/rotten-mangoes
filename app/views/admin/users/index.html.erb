@@ -1,3 +1,8 @@
-<%= @users.each do |user| %>
-  <h5><%= user.full_name %></h5>
+<% @users.each do |user| %>
+<%= user.email %>
+<%= user.full_name %>
+<%= user.admin %>
+<hr>
 <% end %>
+
+<%= paginate @users %>

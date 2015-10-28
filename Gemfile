@@ -32,6 +32,10 @@ gem 'bcrypt', '~> 3.1.7'
 # for file uploads
 gem 'carrierwave'
 gem 'rmagick'
+
+# pagnation
+gem 'kaminari'
+
 # Use unicorn as the app server
 # gem 'unicorn'
 

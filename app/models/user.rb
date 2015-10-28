@@ -18,4 +18,6 @@ class User < ActiveRecord::Base
       "#{firstname} #{lastname}"
     end
 
+    paginates_per 5
+
 end
