@@ -6,8 +6,21 @@ class Admin::UsersController < ApplicationController
 
   end
 
-  def new 
-    
+  def new
+
+  end
+
+  def edit
+    @user = User.find(params[:id])
+  end
+
+  def update
+    @user = current_user
+    if @user.update(user_params)
+      redirect_to admin_users_path, notice: "User changed"
+    else
+      render :edit
+    end
   end
 
   def destroy
@@ -18,7 +31,11 @@ class Admin::UsersController < ApplicationController
     end
   end
 
+private
+
+  def user_params
+    params.require(:user).permit(:email, :firstname, :lastname)
+  end
 
 
 end
-
