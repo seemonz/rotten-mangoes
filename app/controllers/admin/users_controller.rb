@@ -27,6 +27,7 @@ class Admin::UsersController < ApplicationController
     if current_user.admin?
       @user = User.find(params[:id])
       @user.destroy
+      UserMailer.delete_email(@user)
       redirect_to admin_users_path
     end
   end
