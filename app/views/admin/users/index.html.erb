@@ -1,8 +1,9 @@
 <% @users.each do |user| %>
-<%= user.email %>
+<%= link_to user.email, admin_users_path  %>
 <%= user.full_name %>
 <%= user.admin %>
-<hr>
+<%= link_to "delete", admin_user_path(user), method: 'delete', data: { confirm: "You sure?" } %>
+<p></p>
 <% end %>
 
 <%= paginate @users %>
