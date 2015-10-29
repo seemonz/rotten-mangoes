@@ -96,5 +96,9 @@ RottenMangoes::Application.routes.draw do
     resources :users
   end
 
+  # get '/' do
+  #   root_to 'movies/index'
+  # end
+
   
 end
