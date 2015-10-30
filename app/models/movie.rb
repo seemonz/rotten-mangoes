@@ -19,8 +19,8 @@ class Movie < ActiveRecord::Base
 
   validate :release_date_is_in_the_future
 
+  # for image uploads when submitting a movie
   mount_uploader :image, ImageUploader
-
 
   def review_average
     if reviews.size == 0
@@ -30,15 +30,20 @@ class Movie < ActiveRecord::Base
     end
   end
 
-  def self.search(title_search, director_search)
-    if (title_search.blank? && director_search.blank?)
-      self.all
-    elsif title_search || director_search
-      self.where("title LIKE ? OR director LIKE ?", title_search, director_search)
-    else
-      self.all
-    end
-  end
+  # scopes!! not working god damnit!
+  scope :title_search, ->(title_mov) { where("title LIKE ?", "#{title_mov}") }
+  scope :director_search, ->(dir_mov) { where("director LIKE ?", "#{dir_mov}") } 
+
+  # working search for title, director and runtimes
+  # def self.search(title_search, director_search)
+  #   if (title_search.blank? && director_search.blank?)
+  #     self.all
+  #   elsif title_search || director_search
+  #     self.where("title LIKE ? OR director LIKE ?", title_search, director_search)
+  #   else
+  #     self.all
+  #   end
+  # end
 
   def self.search_runtime(runtime)
     case runtime

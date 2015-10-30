@@ -1,6 +1,4 @@
-<h1>Rotten Mangoes</h1>
-<%= link_to "Submit a movie!", new_movie_path %>
-<hr>
+
 
 <h1>Search</h1>
 <%= form_tag movies_path, method: "get" do %>
@@ -16,7 +14,7 @@
   <%= select_tag(:runtime, options_for_select([["", ""],["Under 90 Mins", "under90"], ["Between 90 and 120 Mins", "between90and120"], ["Over 120 Mins", "over120"]])) %>
   <%= submit_tag "Search" %>
 <% end %>
-
+<hr>
 <% @movies.each do |movie| %>
   <%= link_to image_tag(movie.poster_image_url), movie_path(movie) %>
   <%= image_tag movie.image_url() if movie.image? %>
