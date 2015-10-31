@@ -5,19 +5,23 @@
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
+
+  <link rel="stylesheet" href="/app/assets/stylesheets/skeleton.css">
+  <link rel="stylesheet" href="/app/assets/stylesheets/application.css">
+
 </head>
 <body>
   <div id="main-container">
   <div id="page-title">
     <h1><%= link_to "Rotten Mangoes", movies_index_path %></h1>
-      <%= link_to "Submit a movie!", new_movie_path %>
+      <%= link_to "Submit a movie!", new_movie_path %> <%= render 'layouts/footer' %>
     <hr>
   </div>
   <% flash.each do |key, value| %>
     <%= content_tag(:div, value) %>
   <% end %>
   <%= yield %>
-  <%= render 'layouts/footer' %>
+
   </div>
 </body>
 </html>

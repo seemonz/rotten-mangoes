@@ -1,19 +1,20 @@
 
+<div id="search">
+  <h1>Search</h1>
+  <%= form_tag movies_path, method: "get" do %>
+    <!-- title search -->
+    <%= label_tag(:title) %>
+    <%= text_field_tag(:title, params[:title]) %>
 
-<h1>Search</h1>
-<%= form_tag movies_path, method: "get" do %>
-  <!-- title search -->
-  <%= label_tag(:title) %>
-  <%= text_field_tag(:title, params[:title]) %>
+    <!-- director serach -->
+    <%= label_tag(:director) %>
+    <%= text_field_tag(:director, params[:director]) %>
 
-  <!-- director serach -->
-  <%= label_tag(:director) %>
-  <%= text_field_tag(:director, params[:director]) %>
-
-  <!-- runtime search -->
-  <%= select_tag(:runtime, options_for_select([["", ""],["Under 90 Mins", "under90"], ["Between 90 and 120 Mins", "between90and120"], ["Over 120 Mins", "over120"]])) %>
-  <%= submit_tag "Search" %>
-<% end %>
+    <!-- runtime search -->
+    <%= select_tag(:runtime, options_for_select([["", ""],["Under 90 Mins", "under90"], ["Between 90 and 120 Mins", "between90and120"], ["Over 120 Mins", "over120"]])) %>
+    <%= submit_tag "Search" %>
+  <% end %>
+</div>
 <hr>
 <% @movies.each do |movie| %>
   <%= link_to image_tag(movie.poster_image_url), movie_path(movie) %>
