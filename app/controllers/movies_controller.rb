@@ -1,15 +1,17 @@
 class MoviesController < ApplicationController
   def index
 
-    # scope search, only works on each field independently
+    @movies = Movie.all 
+
     if !params[:title].blank?
-      @movies = Movie.title_search(params[:title])
-    elsif !params[:director].blank?
-      @movies = Movie.director_search(params[:director])
-    elsif !params[:runtime].blank?
-      @movies = Movie.search_runtime(params[:runtime])
-    else 
-      @movies = Movie.all 
+      @movies = @movies.title_search(params[:title])
+    end
+
+    if !params[:director].blank?
+      @movies = @movies.director_search(params[:director])
+    end
+    if !params[:runtime].blank?
+      @movies = @movies.search_runtime(params[:runtime])
     end
   end
 

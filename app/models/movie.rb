@@ -29,21 +29,19 @@ class Movie < ActiveRecord::Base
       reviews.sum(:rating_out_of_ten)/reviews.size
     end
   end
-
+  
   # scopes!! not working god damnit!
   scope :title_search, ->(title_mov) { where("title LIKE ?", "#{title_mov}") }
   scope :director_search, ->(dir_mov) { where("director LIKE ?", "#{dir_mov}") } 
 
-  # working search for title, director and runtimes
-  # def self.search(title_search, director_search)
-  #   if (title_search.blank? && director_search.blank?)
-  #     self.all
-  #   elsif title_search || director_search
-  #     self.where("title LIKE ? OR director LIKE ?", title_search, director_search)
-  #   else
-  #     self.all
+  # def self.search_all(keyword)
+  #   if !keyword.blank?
+  #     where("title like ? or director like ?", "#{keyword}" "#{keyword}")
+  #   else 
+  #     self.all? 
   #   end
   # end
+  # where(director like ? OK title like ?, #keyword, #keyword)
 
   def self.search_runtime(runtime)
     case runtime
